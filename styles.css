@@ -1,0 +1,183 @@
+/* Arcane Visual */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0f0f1b, #1b263b);
+    color: #e0e1dd;
+    font-family: 'Orbitron', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 40px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00ffff55;
+}
+
+h1 {
+    font-size: 3em;
+    color: #00ffff;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1em;
+    color: #b8c0ff;
+    margin-bottom: 20px;
+}
+
+.character-selection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.character-card {
+    background-color: #14213d;
+    border: 2px solid #00ffff55;
+    border-radius: 10px;
+    width: 240px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.character-card img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #00ffff33;
+}
+
+.character-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ffff99;
+}
+
+.story-section {
+    padding: 30px 20px 10px 20px;
+    background-color: #1b1f2a;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.story-text {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: #e0f7fa;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.option-button {
+    background: #00bcd4;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.option-button:hover {
+    background: #008c9e;
+}
+
+.truth-table {
+    display: none;
+    width: 100%;
+    border-collapse: collapse;
+    color: #c0e8f9;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.truth-table h3 {
+    color: #00ffff;
+    margin-bottom: 10px;
+}
+
+.truth-table th,
+.truth-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #00ffff44;
+}
+
+.truth-table th {
+    background-color: #14213d;
+    color: #00ffff;
+}
+
+.truth-table tr:nth-child(even) {
+    background-color: #1f2a44;
+}
+
+.truth-table tr:nth-child(odd) {
+    background-color: #0f1626;
+}
+.character-card {
+& h2{
+    font-size: 1.5em;
+    color: #00ffff;
+    margin: 10px 0;
+}
+
+&p{
+    font-size: 1.2em;
+    color: #b8c0ff;
+    margin-top: 10px;
+}
+}
+.story-section{
+    grid-template-areas:
+    "story-text story-text truth-table"
+    "story-text story-text truth-table"
+    "options options truth-table";
+}
+.story-text{
+    grid-area: story-text;
+    margin: 0 auto;
+    width: 80%;
+
+}
+.options{
+    grid-area: options;
+    width: 80%;
+    margin: 20px auto 10px auto;
+}
+.truth-table{
+    grid-area: truth-table;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 10px auto;
+
+}

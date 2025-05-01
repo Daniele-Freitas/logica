@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcane: Jogo de Lógica Proposicional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Trilha Sonora -->
+    <audio id="bg-music" autoplay loop>
+        <source src="arcane-theme.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Efeito Sonoro de Escolha -->
+    <audio id="click-sound">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <div id="welcome-message">
+            <h1>Entre no Universo de Arcane</h1>
+            <p>Escolha seu personagem para começar a jornada.</p>
+        </div>
+
+        <div id="character-selection" class="character-selection"></div>
+
+        <div id="story-section" class="story-section" style="display: none;">
+            <div id="story-text" class="story-text"></div>
+            <div id="options" class="options"></div>
+            <div id="truth-table" class="truth-table">
+                <h3>Tabela Verdade</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Expressão</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="truth-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
