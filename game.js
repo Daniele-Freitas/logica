@@ -1,116 +1,177 @@
-const clickSound = new Audio('click.mp3');
 
 const characters = {
     caitlyn: {
         name: "Caitlyn",
-        description: "A atenta xerife de Piltover que busca justiça acima de tudo.",
-        img: "/img/Caitlyn_50.jpg",
+        description: "A agente de Piltover que busca justiça mesmo contra o sistema.",
+        img: "/Caitlyn_50.jpg",
         story: [
             {
-                text: "Relatos de roubos misteriosos surgem em Piltover. (p)",
-                expression: "p → q",
-                image: "/img/caitlyn-etapa1.jpg",
+                text: "Etapa 1 - O Incidente na ponte: Uma explosão suspeita ocorreu entre Piltover e Zaun.",
+                expression: "Define p",
+                image: "/caitlyn-etapa1.jpg",
                 proposition: "p",
                 options: [
-                    { text: "Investigar o mercado (p)", nextStep: 1, values: { p: true } },
-                    { text: "Ignorar e visitar o laboratório (¬p)", nextStep: 1, values: { p: false } }
+                    { text: "Investiga por conta própria e vai até Zaun (p)", nextStep: 1, values: { p: true } },
+                    { text: "Fica em Piltover e tenta convencer o conselho (¬p)", nextStep: 1, values: { p: false } }
                 ]
             },
             {
-                text: "Você encontra uma pista ou nada. (q ∧ r)",
-                expression: "q ∧ r",
-                image: "caitlyn-etapa2.jpg",
+                text: "Etapa 2 – A Aliança com Vi: Caitlyn encontra Vi presa e precisa decidir.",
+                expression: "Define q",
+                image: "/caitlyn-etapa-2.png",
                 proposition: "q",
                 options: [
-                    { text: "Seguir até a casa (r)", nextStep: 2, values: { q: true, r: true } },
-                    { text: "Notificar guardas (¬r)", nextStep: 2, values: { q: true, r: false } }
+                    { text: "Liberta Vi para ajudar (q)", nextStep: 2, values: { q: true } },
+                    { text: "Não envolve Vi na missão (¬q)", nextStep: 2, values: { q: false } }
                 ]
             },
             {
-                text: "Confronto final com o culpado. (p ∧ q ∧ r)",
-                expression: "p ∧ q ∧ r",
-                image: "caitlyn-etapa3.jpg",
-                isEnding: true
-            }
-        ]
-    },
-
-    heimerdinger: {
-        name: "Heimerdinger",
-        description: "O gênio inventor de Piltover, sempre guiado pela razão.",
-        img: "/img/Heimerdinger_33.jpg",
-        story: [
-            {
-                text: "Você projeta um protótipo de segurança que pode colocar a segurança de todos em risco. O que você faz em seguida?",
-                expression: "p ʌ q",
-                image: "heimer-etapa1.jpg",
-                proposition: "p",
-                options: [
-                    { text: "Não observa impulsivamente e resolve testar sozinho sem contar para ninguém (p ʌ q)", nextStep: 1, values: { p: true } },
-                    { text: "Observa cuidadosamente e conta para Caitlyn (¬p ʌ ¬q)", nextStep: 1, values: { p: false } }
-                ]
-            },
-            {
-                text: "Falha inesperada. (¬p → q)",
-                expression: "¬p → q",
-                image: "heimer-etapa2.jpg",
-                proposition: "q",
-                options: [
-                    { text: "Chamar Caitlyn (q)", nextStep: 2, values: { q: true } },
-                    { text: "Tentar sozinho (¬q)", nextStep: 2, values: { q: false } }
-                ]
-            },
-            {
-                text: "Reparos finais. (p ∨ q) ∧ r",
-                expression: "(p ∨ q) ∧ r",
-                image: "heimer-etapa3.jpg",
+                text: "Etapa 3 – Confronto com Jinx: Um momento decisivo com a explosiva irmã de Vi.",
+                expression: "Define r",
+                image: "/caitlyn-etapa-3.jpg",
                 proposition: "r",
                 options: [
-                    { text: "Implementar melhorias (r)", nextStep: 3, values: { r: true } },
-                    { text: "Encerrar projeto (¬r)", nextStep: 3, values: { r: false } }
+                    { text: "Atira para impedir Jinx (r)", nextStep: 3, values: { r: true } },
+                    { text: "Tenta persuadir Jinx (¬r)", nextStep: 3, values: { r: false } }
                 ]
             },
             {
-                text: "Resultados da invenção. ((p ∨ q) ∧ r)",
-                expression: "(p ∨ q) ∧ r",
-                image: "heimer-final.jpg",
+                text: "Final baseado em (p <-> q) ^ r",
+                expression: "(p <-> q) ^ r",
+                image: "caitlyn-final.jpg",
                 isEnding: true
             }
-        ]
+        ],
+        endings: {
+            bom: {
+                text: "Caitlyn confia em Vi e impede Jinx. Piltover e Zaun iniciam uma nova era de cooperação.",
+                image: "/caitlyn-final-bom.jpg"
+            },
+            ruim: {
+                text: "Caitlyn hesita. Jinx explode o local e Caitlyn é culpada. Piltover mergulha no caos.",
+                image: "/caitlyn-final-ruim.webp"
+            },
+            neutro: {
+                text: "Caitlyn age de forma incoerente. Jinx escapa. A justiça nunca chega.",
+                image: "/caitlyn-final-neutro.jpg"
+            }
+        }
     },
 
     ekko: {
         name: "Ekko",
-        description: "Jovem revolucionário de Zaun com domínio sobre o tempo.",
-        img: "/img/274px-Ekko_Arcane_3_Render.webp",
+        description: "Jovem de Zaun com domínio sobre o tempo e sede de justiça.",
+        img: "/274px-Ekko_Arcane_3_Render.webp",
         story: [
             {
-                text: "Zaun está prestes a colapsar. (p ∧ q)",
-                expression: "p ∧ q",
-                image: "ekko-etapa1.jpg",
+                text: "Etapa 1 – Shimmer no Mercado: Ekko descobre tráfico no mercado de Zaun.",
+                expression: "Define p",
+                image: "/ekko-etapa1.jpg",
                 proposition: "p",
                 options: [
-                    { text: "Voltar no tempo (p)", nextStep: 1, values: { p: true } },
-                    { text: "Confrontar direto (¬p)", nextStep: 1, values: { p: false } }
+                    { text: "Ataca os traficantes (p)", nextStep: 1, values: { p: true } },
+                    { text: "Evita confronto direto (¬p)", nextStep: 1, values: { p: false } }
                 ]
             },
             {
-                text: "Escolha entre aliados. (p → r)",
-                expression: "p → r",
-                image: "ekko-etapa2.jpg",
+                text: "Etapa 2 – A Criança Perdida: Ekko encontra uma criança ferida.",
+                expression: "Define q",
+                image: "/ekko-etapa2.jpg",
+                proposition: "q",
+                options: [
+                    { text: "Salva a criança (q)", nextStep: 2, values: { q: true } },
+                    { text: "Continua a missão (¬q)", nextStep: 2, values: { q: false } }
+                ]
+            },
+            {
+                text: "Etapa 3 – Confronto com Silco: Ekko confronta o responsável pelo shimmer.",
+                expression: "Define r",
+                image: "/ekko-etapa3.jpg",
                 proposition: "r",
                 options: [
-                    { text: "Chamar aliados (r)", nextStep: 2, values: { r: true, q: true } },
-                    { text: "Ir sozinho (¬r)", nextStep: 2, values: { r: false, q: false } }
+                    { text: "Captura Silco (r)", nextStep: 3, values: { r: true } },
+                    { text: "Mata Silco (¬r)", nextStep: 3, values: { r: false } }
                 ]
             },
             {
-                text: "Desfecho do conflito. (p ∧ r)",
-                expression: "p ∧ r",
-                image: "ekko-etapa3.jpg",
+                text: "Final baseado em (p ∨ q) → r",
+                expression: "(p ∨ q) → r",
+                image: "ekko-final.jpg",
                 isEnding: true
             }
-        ]
+        ],
+        endings: {
+            bom: {
+                text: "Ekko salva Zaun com compaixão. Ele inspira uma nova geração de heróis.",
+                image: "ekko-final-bom.jpg"
+            },
+            ruim: {
+                text: "Ekko mata Silco. Uma nova onda de violência começa. O ciclo se repete.",
+                image: "ekko-final-ruim.jpg"
+            },
+            neutro: {
+                text: "Ekko falha em agir. Zaun continua oprimida, esperando outro herói.",
+                image: "ekko-final-neutro.png"
+            }
+        }
+    },
+
+    heimerdinger: {
+        name: "Heimerdinger",
+        description: "Inventor cauteloso e defensor da ciência ética.",
+        img: "/Heimerdinger_33.jpg",
+        story: [
+            {
+                text: "Etapa 1 – O Conselho Dividido: Jayce quer militarizar a hextec.",
+                expression: "Define p",
+                image: "/heimer-etapa1.webp",
+                proposition: "p",
+                options: [
+                    { text: "Vota contra o uso militar (p)", nextStep: 1, values: { p: true } },
+                    { text: "Aceita o uso militar da hextec (¬p)", nextStep: 1, values: { p: false } }
+                ]
+            },
+            {
+                text: "Etapa 2 – Vozes de Zaun: Jovens pedem apoio para seus projetos.",
+                expression: "Define q",
+                image: "/heimer-etapa2.webp",
+                proposition: "q",
+                options: [
+                    { text: "Apoia os projetos (q)", nextStep: 2, values: { q: true } },
+                    { text: "Não se envolve diretamente (¬q)", nextStep: 2, values: { q: false } }
+                ]
+            },
+            {
+                text: "Etapa 3 – A Máquina da Paz: Viktor quer ativar um núcleo instável.",
+                expression: "Define r",
+                image: "/heimer-etapa3.webp",
+                proposition: "r",
+                options: [
+                    { text: "Permite a ativação (r)", nextStep: 3, values: { r: true } },
+                    { text: "Interrompe a ativação (¬r)", nextStep: 3, values: { r: false } }
+                ]
+            },
+            {
+                text: "Final baseado em (p ∧ q) ↔ r",
+                expression: "(p ∧ q) ↔ r",
+                image: "heimer-final.jpg",
+                isEnding: true
+            }
+        ],
+        endings: {
+            bom: {
+                text: "Heimerdinger lidera Piltover com empatia. Viktor estabiliza o núcleo com sucesso.",
+                image: "/heimer-final-bom.jpg"
+            },
+            ruim: {
+                text: "O caos científico se instala. Viktor morre ou o núcleo colapsa. Heimerdinger é afastado.",
+                image: "/heimer-final-ruim.jpg"
+            },
+            neutro: {
+                text: "Heimerdinger evita riscos, mas a cidade segue dividida. Um equilíbrio frágil persiste.",
+                image: "/heimer-final-neutro.png"
+            }
+        }
     }
 };
 
@@ -131,23 +192,31 @@ function displayCharacterSelection() {
             <p>${c.description}</p>
         `;
         card.onclick = () => {
-            playClick();
             startGame(key);
         };
         container.appendChild(card);
     });
 }
 
-function playClick() {
-    clickSound.currentTime = 0;
-    clickSound.play();
-}
+
 
 function startGame(characterKey) {
     chosenCharacter = characters[characterKey];
     document.getElementById("welcome-message").style.display = "none";
     document.getElementById("character-selection").style.display = "none";
     document.getElementById("story-section").style.display = "grid";
+
+
+    const storySection = document.getElementById("story-section");
+
+    // Verifica a altura da janela (viewport)
+    const screenWidth = window.innerWidth;
+
+    // Aplica display com base na altura da tela
+    if (screenWidth < 500) {
+        storySection.style.display = "flex";
+    }
+
     currentStep = 0;
     logicState = {};
     showStory();
@@ -162,11 +231,12 @@ function showStory() {
 
     storyText.innerHTML = `
         <strong>Etapa ${currentStep + 1}:</strong> ${step.text}
-        <br><br><img src="${step.image}" alt="Etapa" style="width: 100%; max-width: 500px; border-radius: 10px; margin-top: 15px;">
+        <br><br><img src="${step.image}" alt="Etapa" style="width: 100%;max-height:300px; max-width: 500px; border-radius: 10px;">
     `;
     options.innerHTML = "";
 
     if (step.isEnding) {
+        showTruthTable();
         showEnding();
         return;
     }
@@ -176,7 +246,6 @@ function showStory() {
         btn.classList.add("option-button");
         btn.textContent = option.text;
         btn.onclick = () => {
-            playClick();
             logicState = { ...logicState, ...option.values };
             nextStep(option.nextStep);
         };
@@ -184,17 +253,43 @@ function showStory() {
     });
 
     truthTable.style.display = "flex";
+    showTruthTable();
+}
+
+function showTruthTable() {
+    const truthBody = document.getElementById("truth-body");
     truthBody.innerHTML = "";
-    chosenCharacter.story.forEach((s, i) => {
-        if (!s.proposition && !s.expression) return;
+
+    chosenCharacter.story.forEach((s) => {
+        if (!s.expression) return;
+
         const tr = document.createElement("tr");
-        const expr = s.expression || `Etapa ${i + 1}`;
+        const expr = s.expression;
         let val = "-";
-        if (s.proposition && logicState.hasOwnProperty(s.proposition)) {
-            val = logicState[s.proposition] ? "Verdadeiro" : "Falso";
-        } else if (i < currentStep) {
-            val = "?";
+
+        if (s.proposition) {
+            val = logicState.hasOwnProperty(s.proposition)
+                ? (logicState[s.proposition] ? "Verdadeiro" : "Falso")
+                : "-";
+        } else if (s.isEnding) {
+            const p = logicState.p;
+            const q = logicState.q;
+            const r = logicState.r;
+
+            if (p !== undefined && q !== undefined && r !== undefined) {
+                if (chosenCharacter.name === "Caitlyn") {
+                    const bicond = (p === q);
+                    val = (bicond && r) ? "Verdadeiro" : "Falso";
+                } else if (chosenCharacter.name === "Ekko") {
+                    const disj = p || q;
+                    val = (!disj || r) ? "Verdadeiro" : "Falso";
+                } else if (chosenCharacter.name === "Heimerdinger") {
+                    const conj = p && q;
+                    val = (conj === r) ? "Verdadeiro" : "Falso";
+                }
+            }
         }
+
         tr.innerHTML = `<td>${expr}</td><td>${val}</td>`;
         truthBody.appendChild(tr);
     });
@@ -217,28 +312,30 @@ function showEnding() {
     if (countTrue === values.length) result = "bom";
     else if (countTrue >= values.length / 2) result = "neutro";
 
-    const endings = {
-        bom: {
-            text: "Você foi brilhante em suas decisões. Um futuro melhor foi garantido.",
-            image: "final-bom.jpg"
-        },
-        neutro: {
-            text: "Nem tudo deu certo... mas você segurou o pior.",
-            image: "final-neutro.jpg"
-        },
-        ruim: {
-            text: "O caos se espalhou. Suas ações não bastaram.",
-            image: "final-ruim.jpg"
-        }
-    };
-
-    const ending = endings[result];
+    const ending = chosenCharacter.endings[result];
 
     storyText.innerHTML = `
         <h2>Final ${result.toUpperCase()}</h2>
         <p>${ending.text}</p>
-        <img src="${ending.image}" alt="Final" style="width: 100%; max-width: 500px; border-radius: 15px; margin-top: 20px;">
+        <img src="${ending.image}" alt="Final" style="width: 100%;max-height:300px; max-width: 500px; border-radius: 15px; margin-top: 20px;">
     `;
+
+    const restartBtn = document.createElement("button");
+    restartBtn.textContent = "Jogar novamente";
+    restartBtn.classList.add("option-button");
+    restartBtn.addEventListener("click", restartGame);
+    options.appendChild(restartBtn);
+
+    showTruthTable();
 }
 
+function restartGame() {
+    document.getElementById("story-section").style.display = "none";
+    document.getElementById("welcome-message").style.display = "block";
+    document.getElementById("character-selection").style.display = "flex";
+    currentStep = 0;
+    chosenCharacter = null;
+    logicState = {};
+    displayCharacterSelection(); // <== isso realmente recria os cards
+}
 window.onload = () => displayCharacterSelection();
