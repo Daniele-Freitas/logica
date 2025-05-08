@@ -49,11 +49,12 @@ const characters = {
             },
             ruim: {
                 text: "Caitlyn hesita. Jinx explode o local e Caitlyn é culpada. Piltover mergulha no caos.",
-                image: "caitlyn-final-ruim.webp"
+                image: "caitlyn-final-neutro.jpg"
+
             },
             neutro: {
                 text: "Caitlyn age de forma incoerente. Jinx escapa. A justiça nunca chega.",
-                image: "caitlyn-final-neutro.jpg"
+                image: "caitlyn-final-ruim.webp"
             }
         }
     },
