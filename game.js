@@ -3,12 +3,12 @@ const characters = {
     caitlyn: {
         name: "Caitlyn",
         description: "A agente de Piltover que busca justiça mesmo contra o sistema.",
-        img: "/Caitlyn_50.jpg",
+        img: "Caitlyn_50.jpg",
         story: [
             {
                 text: "Etapa 1 - O Incidente na ponte: Uma explosão suspeita ocorreu entre Piltover e Zaun.",
                 expression: "Define p",
-                image: "/caitlyn-etapa1.jpg",
+                image: "caitlyn-etapa1.jpg",
                 proposition: "p",
                 options: [
                     { text: "Investiga por conta própria e vai até Zaun (p)", nextStep: 1, values: { p: true } },
@@ -18,7 +18,7 @@ const characters = {
             {
                 text: "Etapa 2 – A Aliança com Vi: Caitlyn encontra Vi presa e precisa decidir.",
                 expression: "Define q",
-                image: "/caitlyn-etapa-2.png",
+                image: "caitlyn-etapa-2.png",
                 proposition: "q",
                 options: [
                     { text: "Liberta Vi para ajudar (q)", nextStep: 2, values: { q: true } },
@@ -28,7 +28,7 @@ const characters = {
             {
                 text: "Etapa 3 – Confronto com Jinx: Um momento decisivo com a explosiva irmã de Vi.",
                 expression: "Define r",
-                image: "/caitlyn-etapa-3.jpg",
+                image: "caitlyn-etapa-3.jpg",
                 proposition: "r",
                 options: [
                     { text: "Atira para impedir Jinx (r)", nextStep: 3, values: { r: true } },
@@ -45,15 +45,15 @@ const characters = {
         endings: {
             bom: {
                 text: "Caitlyn confia em Vi e impede Jinx. Piltover e Zaun iniciam uma nova era de cooperação.",
-                image: "/caitlyn-final-bom.jpg"
+                image: "caitlyn-final-bom.jpg"
             },
             ruim: {
                 text: "Caitlyn hesita. Jinx explode o local e Caitlyn é culpada. Piltover mergulha no caos.",
-                image: "/caitlyn-final-ruim.webp"
+                image: "caitlyn-final-ruim.webp"
             },
             neutro: {
                 text: "Caitlyn age de forma incoerente. Jinx escapa. A justiça nunca chega.",
-                image: "/caitlyn-final-neutro.jpg"
+                image: "caitlyn-final-neutro.jpg"
             }
         }
     },
@@ -61,12 +61,12 @@ const characters = {
     ekko: {
         name: "Ekko",
         description: "Jovem de Zaun com domínio sobre o tempo e sede de justiça.",
-        img: "/274px-Ekko_Arcane_3_Render.webp",
+        img: "274px-Ekko_Arcane_3_Render.webp",
         story: [
             {
                 text: "Etapa 1 – Shimmer no Mercado: Ekko descobre tráfico no mercado de Zaun.",
                 expression: "Define p",
-                image: "/ekko-etapa1.jpg",
+                image: "ekko-etapa1.jpg",
                 proposition: "p",
                 options: [
                     { text: "Ataca os traficantes (p)", nextStep: 1, values: { p: true } },
@@ -76,7 +76,7 @@ const characters = {
             {
                 text: "Etapa 2 – A Criança Perdida: Ekko encontra uma criança ferida.",
                 expression: "Define q",
-                image: "/ekko-etapa2.jpg",
+                image: "ekko-etapa2.jpg",
                 proposition: "q",
                 options: [
                     { text: "Salva a criança (q)", nextStep: 2, values: { q: true } },
@@ -86,7 +86,7 @@ const characters = {
             {
                 text: "Etapa 3 – Confronto com Silco: Ekko confronta o responsável pelo shimmer.",
                 expression: "Define r",
-                image: "/ekko-etapa3.jpg",
+                image: "ekko-etapa3.jpg",
                 proposition: "r",
                 options: [
                     { text: "Captura Silco (r)", nextStep: 3, values: { r: true } },
@@ -119,12 +119,12 @@ const characters = {
     heimerdinger: {
         name: "Heimerdinger",
         description: "Inventor cauteloso e defensor da ciência ética.",
-        img: "/Heimerdinger_33.jpg",
+        img: "Heimerdinger_33.jpg",
         story: [
             {
                 text: "Etapa 1 – O Conselho Dividido: Jayce quer militarizar a hextec.",
                 expression: "Define p",
-                image: "/heimer-etapa1.webp",
+                image: "heimer-etapa1.webp",
                 proposition: "p",
                 options: [
                     { text: "Vota contra o uso militar (p)", nextStep: 1, values: { p: true } },
@@ -134,7 +134,7 @@ const characters = {
             {
                 text: "Etapa 2 – Vozes de Zaun: Jovens pedem apoio para seus projetos.",
                 expression: "Define q",
-                image: "/heimer-etapa2.webp",
+                image: "heimer-etapa2.webp",
                 proposition: "q",
                 options: [
                     { text: "Apoia os projetos (q)", nextStep: 2, values: { q: true } },
@@ -144,7 +144,7 @@ const characters = {
             {
                 text: "Etapa 3 – A Máquina da Paz: Viktor quer ativar um núcleo instável.",
                 expression: "Define r",
-                image: "/heimer-etapa3.webp",
+                image: "heimer-etapa3.webp",
                 proposition: "r",
                 options: [
                     { text: "Permite a ativação (r)", nextStep: 3, values: { r: true } },
@@ -161,15 +161,15 @@ const characters = {
         endings: {
             bom: {
                 text: "Heimerdinger lidera Piltover com empatia. Viktor estabiliza o núcleo com sucesso.",
-                image: "/heimer-final-bom.jpg"
+                image: "heimer-final-bom.jpg"
             },
             ruim: {
                 text: "O caos científico se instala. Viktor morre ou o núcleo colapsa. Heimerdinger é afastado.",
-                image: "/heimer-final-ruim.jpg"
+                image: "heimer-final-ruim.jpg"
             },
             neutro: {
                 text: "Heimerdinger evita riscos, mas a cidade segue dividida. Um equilíbrio frágil persiste.",
-                image: "/heimer-final-neutro.png"
+                image: "heimer-final-neutro.png"
             }
         }
     }
